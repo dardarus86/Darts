@@ -37,7 +37,7 @@ int main()
 		std::cout << "playing games : " << i << "/" << "10000";
 		
 		Game game = Game();
-		game.Play();
+		game.Game1();
 
 		playerScoreArray[game.Player1Wins()][game.Player2Wins()]++;
 		setCursorPosition();
@@ -84,6 +84,6 @@ int main()
 	//			<< (float)(100 * (float)playerScoreArray[i][j] / (float)aiPlayTimes) << "%" << std::endl;
 	//	}
 	//}
-
+	system("pause");
 	return 0;
 }

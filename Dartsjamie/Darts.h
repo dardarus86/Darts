@@ -7,7 +7,7 @@ public:
 	Darts();
 
 	
-	bool Game1(); // if Joe wins, then return true
+	bool Game(); // if Joe wins, then return true
 private:
 	//functions
 	void Update(); // this function contains the process until the gameOver bool is set to true
@@ -20,7 +20,7 @@ private:
 	//objects
 	Player Joe; // creating player object "joe"
 	Player Sid; // creating player object "Sid"
-	Player *currentPlayer; // using a pointer to get the current player. I was going to use a ** but was unsure how to impliment it and went for creating two objects instead
+	Player *currentPlayer; // using a pointer to get the current player. I was going to use a ** and an array but was unsure how to impliment it and went for creating two objects instead
 
 
 
