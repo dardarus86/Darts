@@ -21,7 +21,7 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Darts.cpp">
+    <ClCompile Include="Set.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
@@ -32,10 +32,10 @@
     <ClInclude Include="Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Darts.h">
+    <ClInclude Include="EnumHit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EnumHit.h">
+    <ClInclude Include="Set.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">

@@ -1,4 +1,4 @@
-﻿  Game.cpp
-  Main.cpp
-  Generating Code...
-  Dartsjamie.vcxproj -> C:\Users\Jamie Haddow\Documents\Visual Studio 2017\Projects\Dartsjamie\Debug\Dartsjamie.exe
+﻿  Player.cpp
+c:\users\jamie haddow\documents\github\darts\dartsjamie\player.cpp(19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\jamie haddow\documents\github\darts\dartsjamie\player.cpp(38): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Dartsjamie.vcxproj -> C:\Users\Jamie Haddow\Documents\GitHub\Darts\Dartsjamie\Debug\Dartsjamie.exe

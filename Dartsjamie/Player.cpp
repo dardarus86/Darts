@@ -2,23 +2,34 @@
 #include <random>
 #include <time.h>
 #include <iostream>
+										//////////////////// PLAYER LOGIC FOR THROWING SINGLE,DOUBLE,TRIPLE,BULL & OUTER BULL ////////////////////
+											   /////////////                      commenting complete                         /////////////
 
+//Purpose - setting the accuracy of the private variable
+//Paramaters - int
+//Output - none as its only setting
 void Player::SetAccuracy(int acc)
 {
-	accuracy = acc;
+	playerAccuracy = acc;
 }
 
+//Purpose - setting the bullaccuracy of the private variable
+//Paramaters - int
+//Output - none as its only setting
 void Player::SetBullAccuracy(int bullacc)
 {
 	bullAccuracy = bullacc;
 }
 
-int Player::throw_bull(int p) {
 
-	//  Throw for the bull with accuracy p%  (20<p<85)
 
+//functions below given by Lecturers
+//Purpose - taking a random number, if its below the accuracy of the player, 71 or 73 which is p, if its below p then returnscore of 50, ,below60 return 25 else return 1 + rand of modulus 20 t0 choose a random number
+//Paramaters - taking in an int which is then set within the game.cpp
+//Output - returning 50,25 or 1-20  and minusing the score inside the enum switch statement below
+int Player::bull(int p) {
+	
 	int r = rand() % 100;
-
 	if (r<(p))
 		return 50;
 	else if (r<60)
@@ -27,15 +38,13 @@ int Player::throw_bull(int p) {
 		return 1 + rand() % 20;
 }
 
+//Purpose - taking a random number, if its below the accuracy of the player 80 which is p, if its below p then 3 * the score passed into the function in Game.cpp. Alongside multiple other outcomes depending on rand.
+//Paramaters - taking in an int which is then set within the game.cpp
+//Output - returning 50,25 or 1-20 and minusing the score inside the enum switch statement below
+int Player::treble(int d, int p) {
 
-int Player::throw_treble(int d, int p) {
-
-	//  return result of throwing for treble d with accuracy p%  (o<80)
-
-	
 	int bd[2][21] = { { 0, 20, 15, 17, 18, 12, 13, 19, 16, 14, 6, 8, 9, 4, 11, 10, 7, 2, 1, 3, 5 },
 	{ 0, 18, 17, 19, 13, 20, 10, 16, 11, 12, 15, 14, 5, 6, 9, 2, 8, 3, 4, 7, 1 } };
-
 	int r = rand() % 100;
 
 	if (r<p)
@@ -52,14 +61,14 @@ int Player::throw_treble(int d, int p) {
 		return bd[1][d];
 }
 
+//Purpose - taking a random number, if its below the accuracy of the player 80 which is p, if its below p then 2 * the score passed into the function in Game.cpp. Alongside multiple other outcomes depending on rand.
+//Paramaters - taking in an int which is then set within the game.cpp
+//Output - returning 2* the int d else returning multiple outcomes depending on rand number
+int Player::dble(int d) {
 
-int Player::throw_double(int d) {
-
-	//  return result of throwing for double d with accuracy 80%
-
-	// Board neighbours ignoring slot zero
 	int bd[2][21] = { { 0, 20, 15, 17, 18, 12, 13, 19, 16, 14, 6, 8, 9, 4, 11, 10, 7, 2, 1, 3, 5 },
 	{ 0, 18, 17, 19, 13, 20, 10, 16, 11, 12, 15, 14, 5, 6, 9, 2, 8, 3, 4, 7, 1 } };
+	
 	int r = rand() % 100;
 
 	if (r<80)
@@ -79,8 +88,10 @@ int Player::throw_double(int d) {
 }
 
 
-
-int Player::throw_single(int d) {
+//Purpose - taking a random number, if its below the accuracy of the player 80, if the score is 25, aim for the outer bull else aim for the number thats in int d
+//Paramaters - taking in an int which is then set within the game.cpp
+//Output - returning either an outerbull, bull or a random single number depending on the score input
+int Player::single(int d) {
 
 	//  return result of throwing for single d with accuracy 88% (or 80% for the outer)
 
@@ -110,25 +121,25 @@ int Player::throw_single(int d) {
 			return 2 * d;
 }
 
+
+//Purpose - A throw function using enumerators shown in the games module
+//Paramaters - taking in the enum type and an int which is then set within the game.cpp
+//Output - returning the value of the throws above nad then minusing that number from the totalscore
 void Player::Throw(EnumHit segment, int Number)
 {
 	switch (segment)
 	{
 	case Single:
-		totalScore -= throw_single(Number);
+		totalScore -= single(Number);
 		break;
 	case Double:
-		totalScore -= throw_double(Number);
+		totalScore -= dble(Number);
 		break;
 	case Triple:
-		totalScore -= throw_treble(Number, accuracy);
+		totalScore -= treble(Number, playerAccuracy);
 		break;
 	case Bull:
-		totalScore -= throw_bull(bullAccuracy);
+		totalScore -= bull(bullAccuracy);
 		break;
 	}
-
-	// Make move illegal if ending on a single
-	if (totalScore == 0 && (segment == Single || segment == Triple))
-		totalScore = -1;
 }

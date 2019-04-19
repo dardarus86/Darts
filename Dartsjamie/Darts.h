@@ -5,9 +5,8 @@ class Darts
 {
 public:
 	Darts();
-
-	
 	bool Game(); // if Joe wins, then return true
+
 private:
 	//functions
 	void Update(); // this function contains the process until the gameOver bool is set to true

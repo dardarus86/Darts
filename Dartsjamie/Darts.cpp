@@ -1,9 +1,10 @@
 #include "Darts.h"
 #include <iostream>
-
+#include <time.h>
 // the constructor
 Darts::Darts()
 {
+	
 	//creating the player objects and setting their accurancy using the "setAccuracy"
 	Joe = Player();
 	Sid = Player();
@@ -67,7 +68,7 @@ void Darts::Update()
 	currentPlayer->Throw(Single, currentPlayer->GetScore() - 40);
 	}
 	else if (currentPlayer->GetScore() <= 80) //if the current score is less or equal to 80 and even then called a double throw. If score is odd call a triple throw
-											  //E.G score of 70 -40  /2 would be double 15 which would reduce the score to 40 and the above if statement would be called to win the game
+											  //E.G score of 70 - 40  /2 would be double 15 which would reduce the score to 40 and the above if statement would be called to win the game
 											  //E.G score of 67 - 40 /3 would be triple 9 which would reduce the score to 40 and again the above if statment would be called to win the game
 	{
 		if ((currentPlayer->GetScore() % 2) == 0)
@@ -102,12 +103,11 @@ void Darts::Update()
 		gameOver = true;
 		return;
 	}
-
 	// If the score is 1 or below then set the score to what it was at the start of the throw and then set the current throws to 3 so it will switch player
 	if (currentPlayer->GetScore() <= 1)
 	{
-		currentThrow = 3;
 		currentPlayer->SetScore(startScore);
+		currentThrow = 2;
 	}
 
 
